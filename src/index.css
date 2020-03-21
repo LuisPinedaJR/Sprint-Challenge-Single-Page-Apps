@@ -45,3 +45,14 @@ header h1 {
   margin: 1rem;
   border: 2px solid black;
 }
+.character-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.search-form {
+  display: flex;
+  flex-direction: column;
+  background-color: brown;
+}

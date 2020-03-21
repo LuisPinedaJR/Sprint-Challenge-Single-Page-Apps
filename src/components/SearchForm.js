@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react'
+import SearchCard from './SearchCard'
 
 const SearchForm = props => {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState([])
-  {
-    console.log(props)
-  }
+
+  console.log(props)
+
   const handleChange = event => {
     setSearchTerm(event.target.value)
   }
 
   useEffect(() => {
-    const results = props.characterData.filter(
-      character => {
-        character.toLowerCase().includes(searchTerm)
-      }
-      // console.log('character', character)
+    const results = props.characterData.filter(character =>
+      character.name
+        .toString()
+        .toLowerCase()
+        .includes(searchTerm)
     )
     setSearchResults(results)
   }, [searchTerm])
@@ -28,11 +29,10 @@ const SearchForm = props => {
         value={searchTerm}
         onChange={handleChange}
       />
-      <ul>
-        {searchResults.map(item => (
-          <li>{item}</li>
-        ))}
-      </ul>
+
+      {searchResults.map(char => (
+        <SearchCard {...char} />
+      ))}
     </section>
   )
 }
